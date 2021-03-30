@@ -1,191 +1,185 @@
-
-
 <!-- Main Section OR Form  -->
 <div class=" d-flex justify-content-center bg-light">
   <form #resumeForm="ngForm">
     <div class=" container-fluid">
       <div class="col-md-12">
         <!-- Personal Details Section -->
-        <div class="card bg-light shadow rounded ">
-            <h4 class=" d-flex align-items-center card-header">
-              <i class="material-icons">
-                <span class="material-icons-outlined">
-person
-</span>
-              </i>
-              Personal Details</h4>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class=" form-control" [(ngModel)]="resume.name" name="name" placeholder="Name"
-                    #Name="ngModel" required>
-                </div>
-                   <div class="form-group">
-                  <input type="text" class=" form-control" [(ngModel)]="resume.address" name="address" placeholder="Address"
-                    #Name="ngModel" required>
-                </div>
-                  
+        <div class="card bg-light shadow  ">
+          <h4 class=" d-flex  card-header">
+            <i class="material-icons">
+              <span class="material-icons-outlined">
+                person
+              </span>
+            </i>
+            Personal Details</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class=" form-control" [(ngModel)]="resume.name" name="name" placeholder="Name"
+                  #Name="ngModel" required>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="number" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo"
-                    placeholder="Contact No." #ContactNo="ngModel" required 
-                >
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" [(ngModel)]="resume.email" name="emailId"
-                    placeholder="Email ID" #Email="ngModel" required
-                  >
-                </div>
-             
+              <div class="form-group">
+                <input type="text" class=" form-control" [(ngModel)]="resume.address" name="address"
+                  placeholder="Address" #Address="ngModel" required>
               </div>
-              
+
             </div>
-          
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="number" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo"
+                  placeholder="Contact No." #ContactNo="ngModel" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="resume.email" name="emailId" placeholder="Email ID"
+                  #Email="ngModel" required>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
         <!-- Skills -->
         <div class="card bg-light shadow rounded ">
-              <h4 class="d-flex align-items-center card-header">
-                <i class="material-icons">
-                  <span class="material-icons-outlined">
-engineering
-</span>
-                </i>
-                Skills</h4>
-            <div class="row">
-              <div class="col-md-6" *ngFor="let s of resume.skills; let i=index">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="s.value"
-                    placeholder="e.g. Java / Angular / .Net " #Skill="ngModel" required   >
-                  </div> 
-                </div>
-                <div class="col-md-6 d-flex justify-content-end ">
-                <button class="btn btn-primary  "  (click)="addSkill()">+</button>
-                  </div>
+          <h4 class="d-flex align-items-center card-header">
+            <i class="material-icons">
+              <span class="material-icons-outlined">
+                engineering
+              </span>
+            </i>
+            Skills</h4>
+          <div class="row">
+            <div class="col-md-6" *ngFor="let s of resume.skills; let i=index">
+              <div class="form-group">
+                <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="s.value"
+                  placeholder="e.g. Java / Angular / .Net " #Skill="ngModel" required>
+
+              </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2 d-flex justify-content-center btn-group btn-group-justified ">
+              <button class="btn btn-secondary" (click)="addSkill()">+</button>
+            </div>
+          </div>
         </div>
 
 
         <!-- Experience -->
         <div class="card bg-light shadow rounded">
- 
-    
-              <h4 class="d-flex align-items-center card-header">
-                <i class="material-icons">
-<span class="material-icons-outlined">
-verified
-</span>                </i>
-                Experience</h4>
-           
-        
-            <div class="row" *ngFor="let ex of resume.experiences; let i=index">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="employer{{i}}" [(ngModel)]="ex.employer"
-                    placeholder="Designataion" #Employer="ngModel" required
-                 >
-                </div>
-               
+
+
+          <h4 class="d-flex align-items-center card-header">
+            <i class="material-icons">
+              <span class="material-icons-outlined">
+                verified
+              </span> </i>
+            Experience</h4>
+
+
+          <div class="row " *ngFor="let ex of resume.experiences; let i=index">
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control" name="employer{{i}}" [(ngModel)]="ex.employer"
+                  placeholder="Designataion" #Employer="ngModel" required>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="jobTitle{{i}}" [(ngModel)]="ex.jobTitle"
-                    placeholder="Organization" #JobTitle="ngModel" required
-                 >
-                </div>
-              </div>
-              <div class="col-md-3">
-                 <div class="form-group">
-                  <input type="number" class="form-control" name="exInMonths{{i}}" [(ngModel)]="ex.experience"
-                    placeholder="Experience in months" #Experience="ngModel" required
->
-                </div>
-              </div>
-                <div class="col-md-1 d-flex justify-content-end ">
-                  <button class="btn btn-primary" (click)="addExperience()">+</button>
-        </div>
-                 
-           
 
             </div>
-
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control" name="jobTitle{{i}}" [(ngModel)]="ex.jobTitle"
+                  placeholder="Organization" #JobTitle="ngModel" required>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="number" class="form-control" name="exInMonths{{i}}" [(ngModel)]="ex.experience"
+                  placeholder="Experience in months" #Experience="ngModel" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2 d-flex justify-content-center btn-group btn-group-justified ">
+              <button class="btn btn-secondary" (click)="addExperience()">+</button>
+            </div>
+          </div>
         </div>
 
         <!-- Education -->
         <div class="card bg-light shadow rounded">
-      
 
-              <h4 class="d-flex align-items-center card-header">
-                <i class="material-icons">
-                  school
-                </i>
-                Education</h4>
-             
-         
-            <div class="row" *ngFor="let ed of resume.educations; let i=index">
-              <div class="col-md-3">
-                <div class="form-group">
-                  <select class="form-control" placeholder="Degree" name="degree{{i}}" [(ngModel)]="ed.degree"
-                    #Degree="ngModel" required
-                   >
-                    <option [value]="d" *ngFor="let d of degrees">{{d}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="college{{i}}" [(ngModel)]="ed.college"
-                    placeholder="School/College" #College="ngModel" required
-                >
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <input type="number" class="form-control" name="passingYear{{i}}" [(ngModel)]="ed.passingYear"
-                    placeholder="Passing Year" #PassingYear="ngModel" required
-                  >
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <input type="number" class="form-control" name="result{{i}}" [(ngModel)]="ed.percentage"
-                    placeholder="Percentage" #Percentage="ngModel" required
-                >
-                </div>
-              </div>
-   <div class="col-md-1 d-flex justify-content-end ">
-                    <button class="btn btn-primary" (click)="addEducation()">+</button>
 
-    </div>
-             </div>
-        
+          <h4 class="d-flex align-items-center card-header">
+            <i class="material-icons">
+              school
+            </i>
+            Education</h4>
+
+
+          <div class="row" *ngFor="let ed of resume.educations; let i=index">
+            <div class="col-md-3">
+              <div class="form-group">
+                <select class="form-control" placeholder="Degree" name="degree{{i}}" [(ngModel)]="ed.degree"
+                  #Degree="ngModel" required>
+                  <option [value]="d" *ngFor="let d of degrees">{{d}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" name="college{{i}}" [(ngModel)]="ed.college"
+                  placeholder="School/College" #College="ngModel" required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="number" class="form-control" name="passingYear{{i}}" [(ngModel)]="ed.passingYear"
+                  placeholder="Passing Year" #PassingYear="ngModel" required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="number" class="form-control" name="result{{i}}" [(ngModel)]="ed.percentage"
+                  placeholder="Percentage" #Percentage="ngModel" required>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2 d-flex justify-content-center btn-group btn-group-justified ">
+              <button class="btn btn-secondary" (click)="addEducation()">+</button>
+            </div>
+          </div>
         </div>
 
         <!-- Other Details -->
 
         <div class="card bg-light shadow rounded">
-      
-            <h4 class="d-flex align-items-center card-header">
-              <i class="material-icons"> <span class="material-icons-outlined">
-info
-</span> </i>Other Details</h4>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <textarea type="text" class="form-control" [(ngModel)]="resume.otherDetails" name="otherDetails"
-                    rows="4"></textarea>
-                </div>
+
+          <h4 class="d-flex align-items-center card-header">
+            <i class="material-icons"> <span class="material-icons-outlined">
+                info
+              </span> </i>Other Details</h4>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <textarea type="text" class="form-control" [(ngModel)]="resume.otherDetails" name="otherDetails"
+                  rows="4"></textarea>
               </div>
             </div>
-         
+          </div>
+
         </div>
-     
-      
+
+
 
 
         <div class="shadow-sm card action-buttons">
-          <button (click)="resumeForm.valid ? generatePdf('open') : ''"
+          <button (click)="resumeForm.valid ? generatePdf('open') : '     '   "
             class="btn btn-primary d-flex align-items-center justify-content-center">
             <i class="material-icons">
               picture_as_pdf
@@ -208,8 +202,8 @@ info
             </i><span>Reset</span></button>
         </div>
 
-      
-</div>  
+
+      </div>
 
     </div>
   </form>
